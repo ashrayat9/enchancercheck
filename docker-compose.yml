@@ -20,13 +20,13 @@ services:
       - pse-proxy
     environment:
       - SERVICE_NAME=build-service-1
-      - TECHNOLOGY=${TECHNOLOGY}
-      - VERSION=${VERSION}
-      - MANIFEST_FILE=${MANIFEST_FILE}
-      - BUILD_ID=${BUILD_ID}
+      - TECHNOLOGY=python
+      - VERSION=3.10
+      - MANIFEST_FILE=requirements.txt
+      - BUILD_ID=715ca371-d273-4494-8ba9-c0d84b63eb58
     volumes:
       - ./entrypoints:/app/entrypoints
-      - ${MANIFEST_PATH}:/app/${MANIFEST_FILE}
+      - requirements.txt:/app/requirements.txt
       - ./build.sh:/app/build.sh
     working_dir: /app
     entrypoint: ["/app/entrypoints/entrypoint.sh"]
