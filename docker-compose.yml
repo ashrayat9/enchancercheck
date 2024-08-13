@@ -9,9 +9,9 @@ services:
       - INVISIRISK_JWT_TOKEN="123"
       - PSE_DEBUG_FLAG=--alsologtostderr
       - POLICY_LOG=t
-      - INVISIRISK_PORTAL=${CALLBACK_URL}
+      - INVISIRISK_PORTAL=https://app.a.invisirisk.com/
   build-service-1:
-    image: ${BUILD_IMAGE}
+    image: python:3.10-alpine
     container_name: build-service-1
     user: root
     cap_add:
