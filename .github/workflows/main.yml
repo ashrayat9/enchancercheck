@@ -1,0 +1,17 @@
+name: Sbom Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Start Docker Compose in detached mode
+      run: docker-compose up

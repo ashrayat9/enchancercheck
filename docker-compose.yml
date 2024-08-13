@@ -10,4 +10,23 @@ services:
       - PSE_DEBUG_FLAG=--alsologtostderr
       - POLICY_LOG=t
       - INVISIRISK_PORTAL=${CALLBACK_URL}
-
+  build-service-1:
+    image: ${BUILD_IMAGE}
+    container_name: build-service-1
+    user: root
+    cap_add:
+      - NET_ADMIN
+    depends_on:
+      - pse-proxy
+    environment:
+      - SERVICE_NAME=build-service-1
+      - TECHNOLOGY=${TECHNOLOGY}
+      - VERSION=${VERSION}
+      - MANIFEST_FILE=${MANIFEST_FILE}
+      - BUILD_ID=${BUILD_ID}
+    volumes:
+      - ./entrypoints:/app/entrypoints
+      - ${MANIFEST_PATH}:/app/${MANIFEST_FILE}
+      - ./build.sh:/app/build.sh
+    working_dir: /app
+    entrypoint: ["/app/entrypoints/entrypoint.sh"]
