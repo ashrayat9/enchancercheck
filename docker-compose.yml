@@ -1,0 +1,13 @@
+version: '2.28.1'
+
+services:
+  pse-proxy:
+    image: invisirisk/pse:v1.0.3
+    container_name: pse-proxy
+    user: root
+    environment:
+      - INVISIRISK_JWT_TOKEN="123"
+      - PSE_DEBUG_FLAG=--alsologtostderr
+      - POLICY_LOG=t
+      - INVISIRISK_PORTAL=${CALLBACK_URL}
+
