@@ -30,13 +30,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Checkout the code
       uses: actions/checkout@v3
-    - name: Update certificates and install dependencies
-      run: |-
-        apt-get update
-        apt-get install -y ca-certificates
-        update-ca-certificates
-        pwd
-        ls -lah
     - name: Install Python dependencies
       run: |
         python3 -m pip install --upgrade pip
