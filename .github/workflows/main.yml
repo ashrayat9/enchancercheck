@@ -25,7 +25,7 @@ jobs:
       image: python:3.10-alpine
       options: --cap-add=NET_ADMIN
     steps:
-    - uses: invisirisk/pse-action@v1
+    - uses: invisirisk/pse-action@v1.0.6
       with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Checkout the code
