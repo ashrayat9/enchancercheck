@@ -22,7 +22,7 @@ jobs:
           #POLICY_URL: https://app.dev.veribom.com/
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     container:
-      image: python:3.10
+      image: python:3.10-alpine
       options: --cap-add=NET_ADMIN
     steps:
     - uses: invisirisk/pse-action@v1
