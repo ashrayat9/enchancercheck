@@ -22,12 +22,19 @@ jobs:
           #POLICY_URL: https://app.dev.veribom.com/
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     container:
-      image: python:3.10-alpine
+      image: python:3.10
       options: --cap-add=NET_ADMIN
     steps:
     - uses: invisirisk/pse-action@v1
       with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Checkout the code
-      uses: actions/checkout@v3
-    - run: pip install -r requirements.txt
+    - name: Update certificates and install dependencies
+      run: |-
+        apt-get update
+        apt-get install -y ca-certificates
+        update-ca-certificates
+    - name: Install Python dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        pip install -r requirements.txt
+   
