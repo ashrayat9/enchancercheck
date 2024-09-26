@@ -29,8 +29,9 @@ jobs:
       image: python:3.10-alpine
       options: --cap-add=NET_ADMIN
     steps:
-    - uses: invisirisk/pse-action@v1.0.6
+    - uses: invisirisk/pse-action@v1.0.7
       with:
+          SCAN_ID: 'Dummy scan id'
           github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Checkout the code
       uses: actions/checkout@v3
